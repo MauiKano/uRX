@@ -1,0 +1,56 @@
+Shortwave Frequency:         4209.5kHz
+Mediumwave Frequency english: 518kHz
+Mediumwave Frequence local:   490 kHz
+Example Device: http://www.wetterinfobox.com/WIB2D11.htm
+
+
+Test case constructions:
+
+1. Set fldigi to NAVTEX Mode 
+
+    Open fldigi.
+    Navigate to the Op Mode menu.
+    Select NAVTEX or SITOR-B. (Both use the same underlying SITOR-B protocol, but the NAVTEX mode includes automatic headers). 
+
+2. Configure the Audio Output to a File 
+
+    Go to the File menu and select Audio.
+    Select TX Generate.
+    A window will prompt you to choose a save location and name for your new .wav file. 
+
+3. Prepare and Transmit Your Message
+
+    Center Frequency: Ensure your waterfall cursor is centered at 1000 Hz (standard for SITOR-B/NAVTEX audio).
+    Compose Message: Type your test message in the blue (lower) typing pane. For a valid NAVTEX message, use the standard format:
+        Start: ZCZC followed by a space and a 4-character ID (e.g., ZCZC PA01).
+        Body: Your test text.
+        End: NNNN on a new line.
+    Execute TX: Press the T/R button (or Ctrl-T).
+        Fldigi will automatically precede your message with several seconds of the required phasing signal.
+        The software will then encode each character twice for FEC.
+        Once the message finishes, press the T/R button again (or use the ^r shortcut at the end of your text) to stop the recording. 
+
+4. Verify the Signal
+
+    Uncheck TX Generate in the File menu.
+    Go to File > Audio > Playback and select your newly created file.
+    If generated correctly, fldigi should be able to decode its own signal on the waterfall. 
+
+5. Using the File in SDRangel
+When feeding this .wav file into your File Channel Source in SDRangel, remember to match the sample rate: 
+
+    Sample Rate: Fldigi typically records at your sound card's rate (e.g., 44.1 kHz or 48 kHz).
+    Interpolation: You must set the Interpolation (S) factor in SDRangel to scale this rate up to your hardware's rate (e.g., if playing a 48 kHz file through a 2 MHz LimeSDR sink, set interpolation to ~41.6
+
+
+Resample the audio file so that it maches a SR of 4Ms/s with HW 16:
+
+sox input_navtex.wav --rate 2000000 --channels 2 --bits 16 output_2M.wav
+
+
+
+Project Compnents:
+
+CCIR476 is a arduino library that decodes CCIR476 messages. this includes decoding of NAVTEX messages
+
+Si4735 is a hight integrated (sdr) receiver for HF, MW, LW, UKW
