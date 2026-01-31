@@ -2351,6 +2351,12 @@
 		(uuid "33fedfed-abb8-4f8d-9e54-3c11ce68d8f3")
 	)
 	(junction
+		(at 187.96 77.47)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "38509be1-ba70-4710-bfd4-099621dc9b54")
+	)
+	(junction
 		(at 113.03 97.79)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2393,12 +2399,6 @@
 		(uuid "7f7472d7-aeea-42bd-b0d0-7b6bc3e18942")
 	)
 	(junction
-		(at 189.23 77.47)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "847ca23b-f682-4abf-a7ef-1b2bb902a4ec")
-	)
-	(junction
 		(at 195.58 96.52)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2423,10 +2423,10 @@
 		(uuid "c8b74921-06ab-4eb5-a24d-88756ce5566f")
 	)
 	(junction
-		(at 171.45 63.5)
+		(at 193.04 77.47)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "cbf1c4b1-e86e-4831-931a-1720495262f8")
+		(uuid "d2d1dddd-fcad-4298-b6d0-166dbf5bb7ac")
 	)
 	(junction
 		(at 139.7 119.38)
@@ -2584,6 +2584,16 @@
 	)
 	(wire
 		(pts
+			(xy 193.04 77.47) (xy 200.66 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "19b7a950-a280-4caf-b06f-0430321bbe66")
+	)
+	(wire
+		(pts
 			(xy 135.89 97.79) (xy 135.89 92.71)
 		)
 		(stroke
@@ -2621,16 +2631,6 @@
 			(type default)
 		)
 		(uuid "24b0986f-a154-4044-97ab-5980646b37e6")
-	)
-	(wire
-		(pts
-			(xy 171.45 63.5) (xy 171.45 68.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "25aeb2dd-99cf-4bd7-b6ca-d1c2d97e49ec")
 	)
 	(wire
 		(pts
@@ -2681,16 +2681,6 @@
 			(type default)
 		)
 		(uuid "30a66b89-c9d3-471c-861f-bb9fe9efacb0")
-	)
-	(wire
-		(pts
-			(xy 189.23 77.47) (xy 200.66 77.47)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "35906eb0-411d-43ab-bf3d-eef359adb76b")
 	)
 	(wire
 		(pts
@@ -2804,7 +2794,7 @@
 	)
 	(wire
 		(pts
-			(xy 182.88 77.47) (xy 189.23 77.47)
+			(xy 182.88 77.47) (xy 187.96 77.47)
 		)
 		(stroke
 			(width 0)
@@ -2844,6 +2834,16 @@
 	)
 	(wire
 		(pts
+			(xy 171.45 63.5) (xy 187.96 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5524e579-51db-4c82-ab80-206128b71271")
+	)
+	(wire
+		(pts
 			(xy 121.92 96.52) (xy 121.92 119.38)
 		)
 		(stroke
@@ -2854,7 +2854,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 74.93) (xy 189.23 77.47)
+			(xy 193.04 74.93) (xy 193.04 77.47)
 		)
 		(stroke
 			(width 0)
@@ -2954,6 +2954,16 @@
 	)
 	(wire
 		(pts
+			(xy 187.96 74.93) (xy 187.96 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "66e4319f-07a5-4f94-82f7-45cf0e86d2d6")
+	)
+	(wire
+		(pts
 			(xy 115.57 105.41) (xy 128.27 105.41)
 		)
 		(stroke
@@ -2994,6 +3004,16 @@
 	)
 	(wire
 		(pts
+			(xy 187.96 77.47) (xy 193.04 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "723b19e4-e7a2-44ad-8a30-f237af6a7a27")
+	)
+	(wire
+		(pts
 			(xy 110.49 106.68) (xy 111.76 106.68)
 		)
 		(stroke
@@ -3004,7 +3024,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 69.85) (xy 189.23 63.5)
+			(xy 193.04 69.85) (xy 193.04 60.96)
 		)
 		(stroke
 			(width 0)
@@ -3031,6 +3051,16 @@
 			(type default)
 		)
 		(uuid "7d0b4f30-973f-4938-8038-e689f83c3e73")
+	)
+	(wire
+		(pts
+			(xy 187.96 63.5) (xy 187.96 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "81e44b0e-0f06-4a68-8b72-dfa89d502ca8")
 	)
 	(wire
 		(pts
@@ -3364,7 +3394,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 63.5) (xy 171.45 63.5)
+			(xy 167.64 60.96) (xy 193.04 60.96)
 		)
 		(stroke
 			(width 0)
@@ -3391,6 +3421,16 @@
 			(type default)
 		)
 		(uuid "d7924aa2-49b0-475e-8f7f-c6fd7570e8a5")
+	)
+	(wire
+		(pts
+			(xy 171.45 68.58) (xy 171.45 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d8083522-67c6-405d-bbc7-9d9dd303552a")
 	)
 	(wire
 		(pts
@@ -3454,7 +3494,7 @@
 	)
 	(wire
 		(pts
-			(xy 167.64 63.5) (xy 167.64 68.58)
+			(xy 167.64 60.96) (xy 167.64 68.58)
 		)
 		(stroke
 			(width 0)
@@ -3531,16 +3571,6 @@
 			(type default)
 		)
 		(uuid "f6c5da74-0c01-40e1-81d0-b2b00aa4c549")
-	)
-	(wire
-		(pts
-			(xy 171.45 63.5) (xy 167.64 63.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f86a1feb-bacc-45d1-b97d-34073168e8e7")
 	)
 	(wire
 		(pts
@@ -3764,7 +3794,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "60K"
+		(property "Value" "75k"
 			(at 168.656 109.728 0)
 			(effects
 				(font
@@ -4356,7 +4386,7 @@
 	)
 	(symbol
 		(lib_id "uRX:C_Small")
-		(at 189.23 72.39 0)
+		(at 193.04 72.39 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4364,7 +4394,7 @@
 		(dnp no)
 		(uuid "68e92a1d-871c-4514-b943-a58553615189")
 		(property "Reference" "C12"
-			(at 183.388 72.39 0)
+			(at 189.484 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4373,7 +4403,7 @@
 			)
 		)
 		(property "Value" "10u"
-			(at 184.912 70.358 0)
+			(at 189.23 70.358 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4382,7 +4412,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 189.23 72.39 0)
+			(at 193.04 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4391,7 +4421,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 189.23 72.39 0)
+			(at 193.04 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4400,7 +4430,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 189.23 72.39 0)
+			(at 193.04 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4417,6 +4447,74 @@
 			(project "charger"
 				(path "/622e7602-97f9-4d02-97fb-abddf1d4012c"
 					(reference "C12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "uRX:C_Small")
+		(at 187.96 72.39 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "70df018f-a2fc-4ade-b854-77b64ac82130")
+		(property "Reference" "C1"
+			(at 184.912 74.422 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10u"
+			(at 183.642 70.358 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 187.96 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 187.96 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 187.96 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c50adbe5-a6ec-4d1c-8b85-4afa2360acd1")
+		)
+		(pin "2"
+			(uuid "dea87666-1abd-46e8-bbf4-f26d070d6a23")
+		)
+		(instances
+			(project "charger"
+				(path "/622e7602-97f9-4d02-97fb-abddf1d4012c"
+					(reference "C1")
 					(unit 1)
 				)
 			)
@@ -5058,7 +5156,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "33k"
 			(at 132.334 101.6 90)
 			(effects
 				(font
