@@ -2,4 +2,6 @@
   (version 7)
   (lib (name "uRX")(type "KiCad")(uri "${KIPRJMOD}/uRX.kicad_sym")(options "")(descr ""))
   (lib (name "IP2326")(type "KiCad")(uri "${KIPRJMOD}/KiCADv6/IP2326.kicad_sym")(options "")(descr ""))
+  (lib (name "opa221")(type "KiCad")(uri "${KIPRJMOD}/KiCADv6/opa221.kicad_sym")(options "")(descr ""))
+  (lib (name "opa2211")(type "KiCad")(uri "${KIPRJMOD}/KiCADv6/opa2211.kicad_sym")(options "")(descr ""))
 )

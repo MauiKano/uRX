@@ -722,7 +722,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.st.com/resource/en/datasheet/stusb4500.pdf"
+		(property "Datasheet" "https://done.land/assets/files/ip2326_datasheet.pdf"
 			(at -2.286 35.56 0)
 			(effects
 				(font
@@ -731,7 +731,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Stand-alone USB PD controller (with sink Auto-run mode), QFN-24"
+		(property "Description" "Boost Charging IC for 2/3 Serial Lithium Battery\nWith 15W Fast Charge"
 			(at 0.508 33.274 0)
 			(effects
 				(font
