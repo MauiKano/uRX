@@ -22217,7 +22217,7 @@
 		(dnp no)
 		(uuid "c8bc9afd-70bd-46ac-9aab-4c09e9041800")
 		(property "Reference" "R35"
-			(at 43.434 159.512 90)
+			(at 41.656 165.1 90)
 			(effects
 				(font
 					(size 1.27 1.27)
