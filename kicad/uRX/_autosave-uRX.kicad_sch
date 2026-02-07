@@ -11343,12 +11343,6 @@
 		(uuid "08b7bad8-3f55-4dba-84cb-f14493a0409e")
 	)
 	(junction
-		(at 92.71 106.68)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "0979eb04-974b-4093-b654-bff36568894f")
-	)
-	(junction
 		(at 100.33 33.02)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -11599,12 +11593,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "48ac0d3f-b77b-4548-bb8a-8576d31faf55")
-	)
-	(junction
-		(at 68.58 107.95)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "48ee3a6f-34c2-4670-9d75-cf4e907e46b3")
 	)
 	(junction
 		(at -176.53 -1.27)
@@ -12295,12 +12283,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "fe72b275-ab21-4b99-b3e5-041cbfea7e6c")
-	)
-	(junction
-		(at 78.74 109.22)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ff4e3b15-1257-4b8f-864d-ddf1f6b83b5c")
 	)
 	(no_connect
 		(at 58.42 154.94)
@@ -13860,16 +13842,6 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 106.68) (xy 68.58 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3daa08c7-86bb-488c-8bcb-300038073904")
-	)
-	(wire
-		(pts
 			(xy 273.05 35.56) (xy 273.05 43.18)
 		)
 		(stroke
@@ -14780,7 +14752,7 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 107.95) (xy 68.58 110.49)
+			(xy 68.58 106.68) (xy 68.58 110.49)
 		)
 		(stroke
 			(width 0)
@@ -14807,16 +14779,6 @@
 			(type default)
 		)
 		(uuid "69c75d75-9b9f-471f-82b1-48a030786122")
-	)
-	(wire
-		(pts
-			(xy 69.85 95.25) (xy 69.85 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6b126d8a-a805-4a2a-ac20-c909cffcb2a2")
 	)
 	(wire
 		(pts
@@ -15000,7 +14962,7 @@
 	)
 	(wire
 		(pts
-			(xy 78.74 109.22) (xy 78.74 133.35)
+			(xy 78.74 106.68) (xy 78.74 133.35)
 		)
 		(stroke
 			(width 0)
@@ -15650,16 +15612,6 @@
 	)
 	(wire
 		(pts
-			(xy 81.28 109.22) (xy 78.74 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "91061462-5477-4fce-bfa1-986e18638524")
-	)
-	(wire
-		(pts
 			(xy -161.29 110.49) (xy -154.94 110.49)
 		)
 		(stroke
@@ -15887,16 +15839,6 @@
 			(type default)
 		)
 		(uuid "9c9183f7-50b8-4c5b-be34-18e6155405ec")
-	)
-	(wire
-		(pts
-			(xy 81.28 95.25) (xy 81.28 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9c93d0fa-e962-4827-9410-3cdaf5e7bc4a")
 	)
 	(wire
 		(pts
@@ -16147,16 +16089,6 @@
 			(type default)
 		)
 		(uuid "a7a88fb0-7468-4123-af0e-e9e2a3334f07")
-	)
-	(wire
-		(pts
-			(xy 96.52 95.25) (xy 96.52 106.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a7a9ecb1-3616-47ff-8cf1-746ef7a5beac")
 	)
 	(wire
 		(pts
@@ -16557,16 +16489,6 @@
 			(type default)
 		)
 		(uuid "bce372c5-e2e4-4571-8560-30d20f136ce0")
-	)
-	(wire
-		(pts
-			(xy 96.52 106.68) (xy 92.71 106.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bd15fbe0-1779-4a29-9ecb-10018ca7992f")
 	)
 	(wire
 		(pts
@@ -17067,16 +16989,6 @@
 			(type default)
 		)
 		(uuid "d1fcc28a-520b-4df3-894e-2f8b50d95dbd")
-	)
-	(wire
-		(pts
-			(xy 78.74 106.68) (xy 78.74 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d245b10b-54ee-4e8c-a51f-8b1f4701df66")
 	)
 	(wire
 		(pts
@@ -17897,16 +17809,6 @@
 			(type default)
 		)
 		(uuid "f9e3ba2f-32ec-4781-bb33-b22892150651")
-	)
-	(wire
-		(pts
-			(xy 69.85 107.95) (xy 68.58 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fa63b571-2e40-4d22-9d16-d630af29acc5")
 	)
 	(wire
 		(pts
@@ -24830,73 +24732,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 81.28 95.25 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "77848b99-cdf3-4610-a7e1-8ed0328f18e2")
-		(property "Reference" "VBatt1"
-			(at 83.82 90.6779 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "VBatt"
-			(at 83.82 93.2179 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "TestPoint_THTPad_1.0x1.0mm_Drill0.5mm"
-			(at 86.36 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 86.36 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 81.28 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "fc23228a-023e-412a-b721-c1d6da08f563")
-		)
-		(instances
-			(project "uRX"
-				(path "/2f0dba5d-de99-45c1-97e4-a9fc2e539484"
-					(reference "VBatt1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_name "+5V_4")
 		(lib_id "power:+5V")
 		(at 247.65 101.6 0)
@@ -25561,73 +25396,6 @@
 			(project "uRX"
 				(path "/2f0dba5d-de99-45c1-97e4-a9fc2e539484"
 					(reference "R29")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 69.85 95.25 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "9484a7e8-edd1-4df9-a361-b424278d3613")
-		(property "Reference" "3.3V1"
-			(at 72.39 90.6779 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 72.39 93.2179 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "TestPoint_THTPad_1.0x1.0mm_Drill0.5mm"
-			(at 74.93 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 74.93 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 69.85 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "461d2452-aea8-4823-9f63-ca79f54511dc")
-		)
-		(instances
-			(project "uRX"
-				(path "/2f0dba5d-de99-45c1-97e4-a9fc2e539484"
-					(reference "3.3V1")
 					(unit 1)
 				)
 			)
@@ -27326,73 +27094,6 @@
 			(project "uRX"
 				(path "/2f0dba5d-de99-45c1-97e4-a9fc2e539484"
 					(reference "C16")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 96.52 95.25 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "bd070c03-5717-49e6-991d-2f1b9502f02c")
-		(property "Reference" "5V1"
-			(at 99.06 90.6779 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "+5V"
-			(at 99.06 93.2179 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "TestPoint_THTPad_1.0x1.0mm_Drill0.5mm"
-			(at 101.6 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 101.6 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 96.52 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "23480f88-39e6-4cda-ae82-25484f88c91e")
-		)
-		(instances
-			(project "uRX"
-				(path "/2f0dba5d-de99-45c1-97e4-a9fc2e539484"
-					(reference "5V1")
 					(unit 1)
 				)
 			)

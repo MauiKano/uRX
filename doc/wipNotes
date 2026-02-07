@@ -54,3 +54,10 @@ Project Compnents:
 CCIR476 is a arduino library that decodes CCIR476 messages. this includes decoding of NAVTEX messages
 
 Si4735 is a hight integrated (sdr) receiver for HF, MW, LW, UKW
+
+
+Displays
+WeAct  ST7735, 1.8", 128x160, 56x35mm
+
+
+
