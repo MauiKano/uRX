@@ -11867,10 +11867,12 @@
 	)
 	(text "10=270°"
 		(exclude_from_sim no)
-		(at 214.63 58.42 0)
+		(at 214.376 58.674 0)
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.254)
+				(bold yes)
 			)
 			(justify left bottom)
 		)
@@ -11878,14 +11880,29 @@
 	)
 	(text "11=180°"
 		(exclude_from_sim no)
-		(at 214.63 43.18 0)
+		(at 214.63 42.418 0)
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.254)
+				(bold yes)
 			)
 			(justify left bottom)
 		)
 		(uuid "a3bf936a-4975-4d71-acd5-d36f563da6ff")
+	)
+	(text "I"
+		(exclude_from_sim no)
+		(at 272.796 34.798 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "c21af2a0-deb5-4639-8a1d-dc04884ff3ca")
 	)
 	(text "01=90°"
 		(exclude_from_sim no)
@@ -11897,6 +11914,19 @@
 			(justify left bottom)
 		)
 		(uuid "c5c52a0c-d505-4abd-b2e1-81312379e8d8")
+	)
+	(text "Q"
+		(exclude_from_sim no)
+		(at 272.034 56.896 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "fc4bba5c-3bb8-42ac-a02b-3392d582245d")
 	)
 	(junction
 		(at 101.6 154.94)
@@ -11939,6 +11969,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0aa6a878-c2d1-46f0-9d81-ecbe69d8a0b7")
+	)
+	(junction
+		(at 209.55 55.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0ab65036-c75a-4124-a94d-cfc447d9745c")
 	)
 	(junction
 		(at 118.11 147.32)
@@ -12241,16 +12277,16 @@
 		(uuid "4de694af-b7c3-47c7-ae5a-ae7c4b2ede80")
 	)
 	(junction
-		(at 210.82 53.34)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "4e0b71b2-6dd4-487a-b5d3-2386f6eb1811")
-	)
-	(junction
 		(at 101.6 52.07)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "4fafb6ba-9f37-4857-8d2a-8ea95fb5409b")
+	)
+	(junction
+		(at 226.06 43.18)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "51ed2ea0-9164-4a0b-b544-57df3aaff50a")
 	)
 	(junction
 		(at -137.16 119.38)
@@ -12293,12 +12329,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "5e10844f-7014-4756-9ac2-195e36d22f47")
-	)
-	(junction
-		(at 226.06 43.18)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "5e214156-069d-4b02-8fb8-0de49600bfaa")
 	)
 	(junction
 		(at 223.52 138.43)
@@ -12607,16 +12637,16 @@
 		(uuid "9aafa30c-79ad-40b2-b3fb-0a1ad3074f9d")
 	)
 	(junction
+		(at 210.82 43.18)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9d436b7b-87fc-46a6-b99c-8a2033b3147d")
+	)
+	(junction
 		(at -254 97.79)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9d4f77b8-12bf-4bb3-a5d9-4ed4bc60ca22")
-	)
-	(junction
-		(at 209.55 43.18)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "9d96437f-2f58-46d9-9ebb-c779ea545885")
 	)
 	(junction
 		(at 74.93 189.23)
@@ -12647,12 +12677,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ad6501c2-1071-4561-88d4-f1881a712a3f")
-	)
-	(junction
-		(at 234.95 59.69)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ae033494-0107-4c68-8458-928e03227489")
 	)
 	(junction
 		(at 271.78 26.67)
@@ -12745,6 +12769,12 @@
 		(uuid "bdfcb53d-6db1-4197-8fd3-fb5012233fdf")
 	)
 	(junction
+		(at -238.76 -25.4)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "be8fa299-1341-4725-93b2-9a2a68fa1e95")
+	)
+	(junction
 		(at -156.21 119.38)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -12761,6 +12791,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c17fa669-b5d2-4c9e-ae92-e4a49c5ba587")
+	)
+	(junction
+		(at 234.95 59.69)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c6b49991-6989-4e45-9f3d-0d0a51001936")
 	)
 	(junction
 		(at 228.6 66.04)
@@ -13614,6 +13650,16 @@
 	)
 	(wire
 		(pts
+			(xy -209.55 -25.4) (xy -209.55 -36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0e8f497b-d3bb-477e-a3fa-8ce447404a4e")
+	)
+	(wire
+		(pts
 			(xy -156.21 119.38) (xy -137.16 119.38)
 		)
 		(stroke
@@ -13701,16 +13747,6 @@
 			(type default)
 		)
 		(uuid "11282c81-403a-4732-a58e-f28dfcd7c1ea")
-	)
-	(wire
-		(pts
-			(xy 209.55 43.18) (xy 226.06 43.18)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1172e281-b2bc-4ed4-85f5-fc5944e335b0")
 	)
 	(wire
 		(pts
@@ -13814,7 +13850,7 @@
 	)
 	(wire
 		(pts
-			(xy 234.95 59.69) (xy 236.22 59.69)
+			(xy 209.55 59.69) (xy 234.95 59.69)
 		)
 		(stroke
 			(width 0)
@@ -13894,7 +13930,7 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 53.34) (xy 210.82 40.64)
+			(xy 210.82 53.34) (xy 210.82 43.18)
 		)
 		(stroke
 			(width 0)
@@ -14021,16 +14057,6 @@
 			(type default)
 		)
 		(uuid "1c67062b-da20-432c-b3b6-c516ebb38395")
-	)
-	(wire
-		(pts
-			(xy -62.23 39.37) (xy -49.53 39.37)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1c747efd-c397-49db-baa9-5e5ea12d1633")
 	)
 	(wire
 		(pts
@@ -14224,7 +14250,7 @@
 	)
 	(wire
 		(pts
-			(xy 226.06 43.18) (xy 236.22 43.18)
+			(xy 210.82 43.18) (xy 226.06 43.18)
 		)
 		(stroke
 			(width 0)
@@ -14514,7 +14540,7 @@
 	)
 	(wire
 		(pts
-			(xy -238.76 -30.48) (xy -238.76 -16.51)
+			(xy -238.76 -30.48) (xy -238.76 -25.4)
 		)
 		(stroke
 			(width 0)
@@ -15164,6 +15190,16 @@
 	)
 	(wire
 		(pts
+			(xy 210.82 43.18) (xy 210.82 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "479cef75-1400-4892-bbc0-3dade05261e1")
+	)
+	(wire
+		(pts
 			(xy -60.96 172.72) (xy -49.53 172.72)
 		)
 		(stroke
@@ -15261,16 +15297,6 @@
 			(type default)
 		)
 		(uuid "4b45f20c-11a4-4d55-9625-708feef1e89e")
-	)
-	(wire
-		(pts
-			(xy 210.82 59.69) (xy 234.95 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4b4849e8-393c-40bd-9ad3-4cd0f87a39f9")
 	)
 	(wire
 		(pts
@@ -15381,16 +15407,6 @@
 			(type default)
 		)
 		(uuid "503fbda6-395e-4d25-b2ac-0a218250b1ec")
-	)
-	(wire
-		(pts
-			(xy -62.23 41.91) (xy -49.53 41.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "50a0ef0f-afe7-4b18-abf9-7cfd97d1cb0f")
 	)
 	(wire
 		(pts
@@ -16411,6 +16427,16 @@
 			(type default)
 		)
 		(uuid "79da0b69-f51a-42b7-bf9e-65cb60a55090")
+	)
+	(wire
+		(pts
+			(xy -238.76 -25.4) (xy -238.76 -16.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "79e86992-e28d-4755-aa9e-d838344265fa")
 	)
 	(wire
 		(pts
@@ -17664,6 +17690,16 @@
 	)
 	(wire
 		(pts
+			(xy 234.95 59.69) (xy 236.22 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ab82f840-7eca-4afa-b6df-5365bcf2bca8")
+	)
+	(wire
+		(pts
 			(xy -161.29 119.38) (xy -156.21 119.38)
 		)
 		(stroke
@@ -18834,6 +18870,16 @@
 	)
 	(wire
 		(pts
+			(xy 226.06 43.18) (xy 236.22 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d933b465-8f23-4df9-93a2-a4701b6a565c")
+	)
+	(wire
+		(pts
 			(xy -116.84 170.18) (xy -116.84 191.77)
 		)
 		(stroke
@@ -18881,6 +18927,16 @@
 			(type default)
 		)
 		(uuid "db418e9f-147a-42b0-8bc2-8111aee5be9c")
+	)
+	(wire
+		(pts
+			(xy -238.76 -25.4) (xy -233.68 -25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "db5d1f06-650d-4101-aeb4-8f8174639e4b")
 	)
 	(wire
 		(pts
@@ -19001,16 +19057,6 @@
 			(type default)
 		)
 		(uuid "df4c579c-e1b7-443f-aa8c-cab5e2da7164")
-	)
-	(wire
-		(pts
-			(xy 210.82 53.34) (xy 210.82 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "df516a21-51fe-4bd8-a69c-029939753a63")
 	)
 	(wire
 		(pts
@@ -19291,6 +19337,16 @@
 			(type default)
 		)
 		(uuid "e9ee1956-7445-4d64-a3ca-cfda2e23b126")
+	)
+	(wire
+		(pts
+			(xy -228.6 -25.4) (xy -209.55 -25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eaa62ab1-d409-4670-bfc2-158ca8d27869")
 	)
 	(wire
 		(pts
@@ -19694,6 +19750,16 @@
 	)
 	(wire
 		(pts
+			(xy 209.55 59.69) (xy 209.55 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f9fb93f3-6748-49e6-b423-2406a0686a63")
+	)
+	(wire
+		(pts
 			(xy -161.29 105.41) (xy -161.29 111.76)
 		)
 		(stroke
@@ -19891,26 +19957,6 @@
 			(justify left bottom)
 		)
 		(uuid "317e3dc1-3758-472b-8a88-915f67ce6b44")
-	)
-	(label "+5Vfiltered"
-		(at -62.23 39.37 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "33576965-35b8-4ee7-b95d-faf96417ed6e")
-	)
-	(label "+3.3Vfiltered"
-		(at -62.23 41.91 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "3723c10b-00d8-406c-990d-0215149c8d1a")
 	)
 	(label "+5V"
 		(at -62.23 46.99 0)
@@ -20670,7 +20716,7 @@
 				)
 			)
 		)
-		(property "Value" "47k"
+		(property "Value" "10k"
 			(at 264.16 43.18 90)
 			(effects
 				(font
@@ -21004,7 +21050,7 @@
 				)
 			)
 		)
-		(property "Value" "1.2n"
+		(property "Value" "5.6n"
 			(at 267.208 45.72 90)
 			(effects
 				(font
@@ -21528,6 +21574,72 @@
 			(project "uRX"
 				(path "/2f0dba5d-de99-45c1-97e4-a9fc2e539484"
 					(reference "C42")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "+3.3V_1")
+		(lib_id "power:+3.3V")
+		(at -209.55 -36.83 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "109e242b-687c-457e-9fcd-26daae0a1628")
+		(property "Reference" "#PWR037"
+			(at -209.55 -33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5VfilteredM"
+			(at -213.36 -40.005 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at -209.55 -36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at -209.55 -36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at -209.55 -36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2ce42841-61c5-453b-9482-dfae719f2c5a")
+		)
+		(instances
+			(project "uRX"
+				(path "/2f0dba5d-de99-45c1-97e4-a9fc2e539484"
+					(reference "#PWR037")
 					(unit 1)
 				)
 			)
@@ -23828,7 +23940,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3.3V"
+		(property "Value" "+3.3VfilteredM"
 			(at 180.34 90.805 0)
 			(effects
 				(font
@@ -24094,7 +24206,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+5Vfiltered"
+		(property "Value" "+5VfilteredQ"
 			(at -226.06 -40.005 0)
 			(effects
 				(font
@@ -24517,7 +24629,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "100"
 			(at 240.03 59.69 90)
 			(effects
 				(font
@@ -24602,7 +24714,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "C1017 (Murata BLM18BD601)"
 			(at -229.87 -30.48 0)
 			(effects
 				(font
@@ -24611,7 +24723,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Inductor with ferrite core, small symbol"
+		(property "Description" "Inductor with ferrite core, small symbol,igh-impedance Ferrite Bead (e.g., \\(600\\,\\Omega \\) to \\(1000\\,\\Omega \\) at \\(100\\,\\text{MHz}\\))."
 			(at -229.87 -30.48 0)
 			(effects
 				(font
@@ -26402,7 +26514,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "220n"
+		(property "Value" "470n"
 			(at 228.6 55.88 0)
 			(effects
 				(font
@@ -26420,7 +26532,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "MLCC X7R or NP0/C0G"
 			(at 228.6 53.34 0)
 			(effects
 				(font
@@ -26605,8 +26717,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+5Vfiltered"
-			(at 199.39 12.7 0)
+		(property "Value" "+5VfilteredQ"
+			(at 204.47 15.494 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26669,7 +26781,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "220n"
+		(property "Value" "470n"
 			(at 226.06 48.26 0)
 			(effects
 				(font
@@ -26687,7 +26799,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "MLCC X7R or NP0/C0G"
 			(at 226.06 45.72 0)
 			(effects
 				(font
@@ -27498,7 +27610,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "100"
 			(at 240.03 43.18 90)
 			(effects
 				(font
@@ -27567,7 +27679,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3.3Vfiltered"
+		(property "Value" "+3.3VfilteredM"
 			(at 234.95 97.155 0)
 			(effects
 				(font
@@ -27632,7 +27744,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+5Vfiltered"
+		(property "Value" "+5VfilteredM"
 			(at 248.92 97.79 0)
 			(effects
 				(font
@@ -28666,7 +28778,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Inductor with ferrite core, small symbol"
+		(property "Description" "Inductor with ferrite core, small symbol,C10323 (Murata BLM18PG121)"
 			(at -168.91 -29.21 0)
 			(effects
 				(font
@@ -29257,7 +29369,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "100"
 			(at 240.03 50.8 90)
 			(effects
 				(font
@@ -29392,7 +29504,7 @@
 				)
 			)
 		)
-		(property "Value" "47k"
+		(property "Value" "10k"
 			(at 264.16 64.77 90)
 			(effects
 				(font
@@ -30097,7 +30209,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "220n"
+		(property "Value" "470n"
 			(at 223.52 40.64 0)
 			(effects
 				(font
@@ -30115,7 +30227,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "MLCC X7R or NP0/C0G"
 			(at 223.52 38.1 0)
 			(effects
 				(font
@@ -30165,7 +30277,7 @@
 				)
 			)
 		)
-		(property "Value" "1.2n"
+		(property "Value" "5.6n"
 			(at 264.1663 72.39 90)
 			(effects
 				(font
@@ -31535,7 +31647,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+5V"
+		(property "Value" "+5VfilteredM"
 			(at 194.31 91.44 0)
 			(effects
 				(font
@@ -31801,7 +31913,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "100"
 			(at 240.03 35.56 90)
 			(effects
 				(font
@@ -32562,6 +32674,75 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:L_Ferrite_Small")
+		(at -231.14 -25.4 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "dabc316d-4209-47a3-8c22-08a7481408db")
+		(property "Reference" "L7"
+			(at -234.188 -25.908 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Ferrite_perl"
+			(at -226.06 -24.13 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Inductor_SMD:L_0603_1608Metric"
+			(at -231.14 -25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at -231.14 -25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Inductor with ferrite core, small symbol,C10323 (Murata BLM18PG121)"
+			(at -231.14 -25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "59e6f9ba-7776-4cd9-859c-ce77d8387ff1")
+		)
+		(pin "1"
+			(uuid "5efc1291-5504-4b36-912c-4763789359a1")
+		)
+		(instances
+			(project "uRX"
+				(path "/2f0dba5d-de99-45c1-97e4-a9fc2e539484"
+					(reference "L7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_name "GND_5")
 		(lib_id "power:GND")
 		(at 270.51 29.21 0)
@@ -33260,7 +33441,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3.3Vfiltered"
+		(property "Value" "+3.3VfilteredM"
 			(at -165.1 -37.465 0)
 			(effects
 				(font
@@ -33854,7 +34035,7 @@
 				)
 			)
 		)
-		(property "Value" "47k"
+		(property "Value" "10k"
 			(at 250.444 29.21 90)
 			(effects
 				(font
@@ -34143,7 +34324,7 @@
 				)
 			)
 		)
-		(property "Value" "47k"
+		(property "Value" "10k"
 			(at 250.444 49.53 90)
 			(effects
 				(font
@@ -34757,7 +34938,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "220n"
+		(property "Value" "470"
 			(at 230.124 64.516 0)
 			(effects
 				(font
@@ -34775,7 +34956,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "MLCC X7R or NP0/C0G"
 			(at 234.95 62.23 0)
 			(effects
 				(font
