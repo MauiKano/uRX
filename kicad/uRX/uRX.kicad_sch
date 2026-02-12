@@ -20909,7 +20909,7 @@
 		)
 		(uuid "16e9ab1f-89bf-43fa-b8ef-6d7694310de2")
 	)
-	(label "SDA"
+	(label "GND"
 		(at 27.94 147.32 0)
 		(effects
 			(font
@@ -21139,7 +21139,7 @@
 		)
 		(uuid "4d24335a-fdb1-4221-8915-cd6b518c5e72")
 	)
-	(label "SCL"
+	(label "+3.3V"
 		(at 27.94 142.24 0)
 		(effects
 			(font
@@ -21309,7 +21309,7 @@
 		)
 		(uuid "896ec6aa-c346-4416-ab7a-dc968733089e")
 	)
-	(label "GND"
+	(label "SDA"
 		(at 27.94 144.78 0)
 		(effects
 			(font
@@ -21569,7 +21569,7 @@
 		)
 		(uuid "ef051f43-2184-42fd-ace0-3fcf5d536f80")
 	)
-	(label "+3.3V"
+	(label "SCL"
 		(at 27.94 149.86 0)
 		(effects
 			(font
