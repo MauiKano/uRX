@@ -1,34 +1,71 @@
-Hybrid NAVTEX & Wideband Receiver (ESP32 + Tayloe Mixer + Si4732)
-Overview
-This project is a high-performance, dual-path radio receiver designed for the ESP32 platform. It combines a traditional digital "Radio-on-a-Chip" (Si4732) with a high-sensitivity, software-defined Tayloe Quadrature Product Detector (QPD). The design is specifically optimized for the reception and decoding of NAVTEX signals at 518 kHz, utilizing a professional-grade analog signal chain and high-resolution external ADCs.
-Key Features
-1. Dual Receiver Architecture
+# uRX Navtex SDR – System Documentation
 
-    Path A (SDR): A high-linearity Tayloe Mixer (using the CBT3253 bus switch) for I/Q sampling. This path is intended for precision DSP decoding of weak digital modes like NAVTEX.
-    Path B (Digital): An Si4732-A10 all-in-one receiver for general-purpose listening (AM/FM/SW/LW) and RDS data acquisition.
+## 1. Overview
+The **uRX** is a high-performance Software Defined Radio (SDR) receiver, specifically optimized for **Navtex** transmissions (518 kHz / 490 kHz). It combines the processing power of the **ESP32-S3** with a precision **Tayloe Mixer** and the versatility of the **Si4732** radio chip.
 
-2. High-End Analog Signal Chain
+This project is licensed under the **GNU General Public License v3.0 (GPL-3.0)**.
 
-    Active Antenna Splitter: An OPA2690 high-speed current-feedback op-amp serves as an active buffer/splitter, providing high isolation between the two receiver paths without signal loss.
-    Post-Mixer Amplification: A LM4562 ultra-low noise, high-fidelity audio operational amplifier provides 33.4 dB of gain (Gain=47) to the I/Q signals.
-    Optimized Filtering: Integrated active low-pass filtering with a 2.8 kHz cutoff, specifically tuned to maximize the SNR for NAVTEX/SITOR-B signals.
-    Ultra-Stable Reference: A precision LM4040 (2.5V) shunt reference provides a clean virtual ground for the analog stages, ensuring maximum dynamic range and rejection of power supply noise.
+---
 
-3. Precision Clocking & Digitization
+## 2. Technical Hardware Specification
 
-    Clock Generation: An Si5351A triple clock generator provides the quadrature sampling clock for the Tayloe mixer and a dedicated low-jitter master clock for the ADC.
-    External ADC: Instead of the noisy internal ESP32 ADC, this design uses the PCM1808 (24-bit, 99dB SNR). It interfaces via I2S, providing a transparent digital stream to the ESP32 for software demodulation.
+### RF Frontend & Antenna Management
+*   **Resonant Ferrite Rod Antenna:** Tuned as a high-Q circuit for the target frequencies.
+*   **Signal Splitting:** The antenna signal is buffered and isolated via an **OPA2211** operational amplifier.
+*   **Parallel Architecture:** The OPA2211 output simultaneously feeds the **Tayloe Mixer (CBT3253)** for SDR decoding and the **AM antenna input of the Si4732** for parallel monitoring.
+*   **ATS-Mini Heritage:** The tuner section for the Si4732 implements the proven circuit design of the **ATS-Mini**, including an optimized FM input network (180nH / 18pF).
 
-4. EMI/EMC Optimized Layout
+### Signal Processing (SDR & Audio)
+*   **Dual-Channel Digitization:** A **PCM1808 24-bit ADC** handles the conversion.
+    *   **Channel 1 (I/Q SDR):** Differential I/Q signals from the Tayloe Mixer are amplified via an **LM4562** instrumentation stage.
+    *   **Channel 2 (Si4732 Audio):** The analog audio output of the Si4732 is routed to the second ADC channel for digital post-processing.
+*   **I2S Integration:** Data is streamed via I2S to the ESP32-S3 for real-time decoding and noise reduction.
+*   **Audio Output:** A **PAM8406** power amplifier drives the speaker. A dedicated PDM/PWM output provides audio tones for Navtex monitoring.
 
-    Power Isolation: Independent Ferrite Bead filtering for every major IC to prevent digital switching noise from the ESP32 and Si5351 from polluting the analog front-end.
-    Ground Management: Strict separation of analog and digital ground paths, joined at a single star-point under the ADC to minimize ground loops.
+### Dual Display Architecture
+The uRX features a unique dual-display system for maximum utility:
+*   **4.2" E-Ink Display:** For low-power, high-contrast viewing of decoded Navtex text messages.
+*   **1.9" TFT Display:** For real-time tuning, spectrum visualization, and system menus.
 
-Technical Specifications
+---
 
-    Primary Frequency: 518 kHz (NAVTEX)
-    Mixer Type: Quadrature Sampling Detector (Tayloe)
-    ADC Resolution: 24-Bit I2S (PCM1808)
-    Processor: ESP32 (Dual-Core 240 MHz)
-    I/Q Bandwidth: ~3 kHz (Optimized for digital modes)
+## 3. ESP32-S3 GPIO Assignment (WROOM-2 N16)
+*Note: Optimized for the N16 (non-PSRAM) variant to ensure all GPIOs are available for peripherals.*
+
+| Function | GPIO | Module Pin | Details |
+| :--- | :--- | :--- | :--- |
+| **I2C SDA** | 18 | 11 | Si4732, Si5351 (4.7k Pull-up) |
+| **I2C SCL** | 03 | 15 | Si4732, Si5351 (4.7k Pull-up) |
+| **SPI MOSI** | 01 | 39 | Shared Data (MOSI) |
+| **SPI SCLK** | 02 | 38 | Shared Clock (SCLK) |
+| **E-INK CS** | 04 | 08 | E-Ink Chip Select |
+| **E-INK DC** | 05 | 09 | E-Ink Data/Command |
+| **E-INK RST** | 06 | 10 | E-Ink Reset |
+| **TFT CS** | 42 | 33 | TFT Chip Select |
+| **TFT DC** | 44 | 37 | TFT Data/Command |
+| **TFT RST** | 43 | 36 | TFT Reset |
+| **I2S_DATA** | 13 | 21 | From PCM1808 ADC |
+| **I2S_BCK** | 12 | 20 | Bit Clock (ADC) |
+| **I2S_WS** | 11 | 19 | Word Select (ADC) |
+| **GPS TX** | 16 | 09 | Data from GPS |
+| **GPS RX** | 17 | 10 | Data to GPS |
+| **GPS Power** | 15 | 28 | Controls BC847 (GND-Switch) |
+| **Audio Out** | 10 | 18 | PDM/PWM Navtex Tones |
+| **Encoder A/B**| 38/39| 31/32 | Rotary Encoder Phases |
+| **Encoder SW** | 40 | 33 | Encoder Push-Switch |
+
+---
+
+## 4. Installation & Setup
+1.  **Environment:** [PlatformIO](https://platformio.org) is recommended.
+2.  **Configuration:** Hardware pins are defined in `include/config.h`. 
+3.  **Libraries:** GxEPD2, TFT_eSPI, PU2CLR Si4735, Etherkit Si5351, TinyGPS++.
+4.  **Flash:** Ensure `ARDUINO_USB_CDC_ON_BOOT=1` is set in `platformio.ini` for native USB programming.
+
+---
+
+## 5. Power & Safety
+The system is powered by a **2S LiPo battery (8.4V)** charged via USB-C using the **IP2326**. Ferrite beads and L-C star-filtering are used to protect the sensitive RF stages from switching noise.
+
+**Disclaimer:** This is an experimental open-source project. Handle LiPo batteries with care.
 

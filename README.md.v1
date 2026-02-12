@@ -1,0 +1,77 @@
+uRX Navtex SDR – Project Documentation
+
+## 1. Overview
+The **uRX** is a high-performance Software Defined Radio (SDR) receiver, specifically optimized for **Navtex** transmissions (518 kHz / 490 kHz). It combines the processing power of the **ESP32-S3** with a precision **Tayloe Mixer** and the versatility of the **Si4732** radio chip.
+
+This project is licensed under the **GNU General Public License v3.0 (GPL-3.0)**.
+
+---
+
+## 2. Technical Hardware Specification
+
+### RF Frontend & Antenna Management
+The design utilizes a **resonant Ferrite Rod Antenna**, tuned as a high-Q circuit for the target frequencies.
+*   **Signal Splitting:** The antenna signal is buffered and isolated via an **OPA2211** operational amplifier.
+*   **Parallel Architecture:** The OPA2211 output simultaneously feeds the **Tayloe Mixer (CBT3253)** for SDR decoding and the **AM antenna input of the Si4732** for parallel monitoring.
+*   **ATS-Mini Heritage:** The tuner section for the Si4732 implements the proven circuit design of the **ATS-Mini**, including an optimized FM input network (180nH / 18pF).
+
+### Signal Processing (SDR & Audio)
+The system employs a dual-digitization strategy using a **PCM1808 24-bit ADC**:
+*   **Channel 1 (I/Q SDR):** Differential I/Q signals from the Tayloe Mixer are amplified (LM4562) and sent to the ADC.
+*   **Channel 2 (Si4732 Audio):** The analog audio output of the Si4732 is routed to the second ADC channel.
+*   **I2S Processing:** Data is sent via I2S to the ESP32-S3, allowing for digital post-processing (filtering, noise reduction) before output.
+*   **Audio Output:** A **PAM8406** power amplifier drives the speaker. For Navtex data monitoring, a PDM/PWM output provides signal tones.
+
+### ESP32-S3 GPIO Assignment (WROOM-2 N16)
+*Note: This configuration is optimized for the N16 (non-PSRAM) variant to allow full use of GPIOs.*
+
+| Function | GPIO | Module Pin | Details |
+| :--- | :--- | :--- | :--- |
+| **I2C SDA** | 18 | 11 | Si4732, Si5351 (4.7k Pull-up) |
+| **I2C SCL** | 03 | 15 | Si4732, Si5351 (4.7k Pull-up) |
+| **SPI MOSI** | 01 | 39 | Shared (TFT & E-Ink) |
+| **SPI SCLK** | 02 | 38 | Shared (TFT & E-Ink) |
+| **CS_TFT** | 08 | 12 | 1.9" LCD Chip Select |
+| **CS_EINK** | 04 | 08 | 4.2" E-Ink Chip Select |
+| **DC (Shared)** | 05 | 09 | Data/Command Pin |
+| **RES (Shared)**| 06 | 10 | Reset Pin |
+| **I2S_DATA** | 13 | 21 | From PCM1808 ADC |
+| **I2S_BCK** | 12 | 20 | Bit Clock for ADC |
+| **I2S_WS** | 11 | 19 | Word Select for ADC |
+| **GPS TX** | 16 | 09 | Data from GPS Module |
+| **GPS RX** | 17 | 10 | Data to GPS Module |
+| **GPS Power** | 41 | 34 | Controls BC847 (GND-Switch) |
+| **Audio Out** | 10 | 18 | PDM/PWM Out (Navtex Tones) |
+| **Encoder A** | 38 | 31 | Rotary Encoder Phase A |
+| **Encoder B** | 39 | 32 | Rotary Encoder Phase B |
+| **Encoder SW** | 40 | 33 | Rotary Encoder Switch |
+
+---
+
+## 3. Software & Installation Guide
+
+### Prerequisites
+* **Environment:** [PlatformIO](https://platformio.org) (Recommended) or Arduino IDE.
+* **ESP32 Board Package:** v2.0.x or higher.
+* **Required Libraries:**
+    * **GxEPD2**: 4.2" E-Ink Display Driver.
+    * **TFT_eSPI**: 1.9" LCD Driver (ST7789).
+    * **PU2CLR Si4735**: Si4732 Radio Control.
+    * **Etherkit Si5351**: Clock Generator Control.
+    * **TinyGPS++**: GPS NMEA Parsing.
+
+### Configuration
+1. **Display:** Ensure `User_Setup.h` in the `TFT_eSPI` library matches the pins: MOSI 1, SCLK 2, CS 8, DC 5, RST 6.
+2. **I2S:** Configured for 48kHz/24-bit sampling. Left: I/Q Data, Right: Si4732 Audio.
+
+### Installation
+1. Clone the repository.
+2. Open in PlatformIO and select the ESP32-S3-WROOM-1/2 (N16) environment.
+3. Build and flash via the native USB-C port.
+
+---
+
+## 4. Power Management
+The system is powered by a **2S LiPo battery (8.4V)**. An **IP2326** management chip handles charging via USB-C. To protect the radio's "Quiet Zone," independent L-C star-filters and ferrite beads are implemented to suppress switching noise from the charger and digital sections.
+
+---
