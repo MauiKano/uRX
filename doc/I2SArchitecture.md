@@ -1,36 +1,33 @@
-# uRX I2S System Architecture & Configuration
+# uRX I2S System Architecture: Multi-Lane Full-Duplex Synchronization
 
-## 1. Overview
-The uRX Navtex SDR utilizes a **Full-Duplex, Multi-Channel I2S Architecture**. To ensure perfect phase synchronization and zero-drift between the SDR data, radio audio, and the final output, all audio components are driven by a single I2S clock domain on the **ESP32-S3 (I2S0 Controller)**.
+## 1. System Roles (Master/Slave Hierarchy)
+The uRX Navtex SDR implements a **centralized clocking architecture** to ensure zero-drift signal processing:
 
-## 2. Bus Configuration
-The system operates in **Master Mode** (ESP32 provides the clocks) with the following parameters:
-* **Sample Rate:** 48,000 Hz
-* **Bit Depth:** 24-bit (delivered in 32-bit slots)
-* **Mode:** Full-Duplex (Simultaneous Input and Output)
+*   **I2S Master:** The **ESP32-S3** acts as the sole bus master. It generates the Bit Clock (BCLK) and Word Select (LRCK) signals, governing the timing for all conversion stages.
+*   **I2S Slaves:** Both **PCM1808 ADCs** (SDR and Radio Audio) and the **PCM5102A DAC** operate as slaves, synchronizing their data transmission and reception to the ESP32’s clocks.
+*   **System Clock Generator:** The **Si5351A** acts as the high-frequency reference provider, delivering a dedicated 12.288 MHz (256 * Fs) Master Clock (SCKI) to the ADCs to drive their internal Delta-Sigma modulators.
 
-## 3. Hardware Interconnect (GPIO Mapping)
+## 2. Bus Configuration & Signal Path
+The system utilizes a **Full-Duplex, Multi-Lane I2S configuration** on the I2S0 peripheral of the ESP32-S3. This allows the processor to simultaneously ingest two independent 24-bit data streams while outputting a unified analog audio signal.
 
-| I2S Signal | Direction | ESP32 GPIO | Module Pin | Connected Devices |
+### Physical Wiring (GPIO Mapping)
+| Signal Name | ESP32 GPIO | Direction | Function | Connected To |
 | :--- | :--- | :--- | :--- | :--- |
-| **BCLK** | Output | **GPIO 12** | Pin 20 | ADC0, ADC1, DAC (Bit Clock) |
-| **WS / LRCK** | Output | **GPIO 11** | Pin 19 | ADC0, ADC1, DAC (Word Select) |
-| **DIN0** | Input | **GPIO 13** | Pin 21 | **ADC0** (Tayloe Mixer I/Q) |
-| **DIN1** | Input | **GPIO 14** | Pin 22 | **ADC1** (Si4732 Radio Audio) |
-| **DOUT** | Output | **GPIO 09** | Pin 17 | **DAC** (PCM5102A Unified Audio) |
+| **I2S_WS** | **GPIO 11** | Output | Word Select / LRCK | ADC0, ADC1, DAC |
+| **I2S_BCK** | **GPIO 12** | Output | Bit Clock | ADC0, ADC1, DAC |
+| **I2S_DIN0** | **GPIO 13** | Input | SDR I/Q Data | ADC0 (Tayloe Mixer) |
+| **I2S_DIN1** | **GPIO 14** | Input | Radio Audio | ADC1 (Si4732) |
+| **I2S_DOUT** | **GPIO 10** | Output | Unified Audio | DAC (PCM5102A) |
 
-## 4. Signal Routing Logic
-The ESP32-S3 I2S0 peripheral is configured to handle multiple data lines (Multi-lane I2S):
+## 3. Clock Management Details
+*   **Synchronous Operation:** Since the ADCs and the DAC share the exact same LRCK and BCLK lines from the ESP32, the SDR data and the audio output are phase-locked. This is critical for low-latency digital signal processing and avoiding buffer underruns.
+*   **DAC PLL Mode:** The **PCM5102A DAC** is configured in **PLL Mode** (SCK/Pin 12 tied to GND). It derives its internal high-speed system clock directly from the incoming BCLK (GPIO 12), eliminating the need for a third Master Clock line from the Si5351 and reducing EMI.
+*   **Signal Integrity:** 22Ω series termination resistors are placed at the ESP32 source pins (GPIO 10, 11, 12) to dampen fast edges and prevent RF interference within the sensitive 518 kHz receiver stages.
 
-1.  **SDR Stream (DIN0):** Receives the raw 518 kHz I/Q samples from the Tayloe Mixer. These samples undergo FFT and digital demodulation within the ESP32.
-2.  **Radio Stream (DIN1):** Receives the analog audio output from the Si4732. This allows the ESP32 to apply DSP (Digital Signal Processing) like noise reduction, EQ, or AGC (Automatic Gain Control) to the broadcast audio.
-3.  **Unified Output (DOUT):** The ESP32 digitally mixes the demodulated Navtex tones and the processed Si4732 audio into a single stereo stream. This combined signal is sent to the PCM5102A DAC.
-
-## 5. Implementation Notes
-*   **Clock Master:** The ESP32-S3 generates the Master Clock. The **PCM5102A DAC** is configured in "Internal SCK" mode (SCK pin to GND) to derive its high-speed clock from the BCLK, reducing EMI.
-*   **Phase Coherence:** Since all ADCs share the same **WS** and **BCLK** lines, the phase relationship between the I/Q samples (ADC0) and the radio audio (ADC1) is perfectly maintained, which is critical for advanced signal post-processing.
-*   **WROOM-2 Compatibility:** By using **GPIO 09** (Pin 17) for DOUT, the design remains fully compatible with the **N16 (non-PSRAM)** variant, avoiding the Octal-SPI memory conflict zone (GPIO 33-37).
+## 4. Processing Flow
+1.  **Ingress:** The ESP32-S3 reads the **I/Q SDR stream** (DIN0) and the **Si4732 stream** (DIN1) into a single DMA buffer.
+2.  **DSP:** The ESP32 performs FFT/demodulation on the SDR data and applies noise reduction/mixing to the radio audio.
+3.  **Egress:** The unified audio (Navtex signal tones + processed radio audio) is pushed out via **DIN** (GPIO 10) to the PCM5102A, which feeds the **PAM8406** power amplifier.
 
 ---
-*Technical Note: I2S0 peripheral in the ESP32-S3 supports up to 4 input lanes, of which 2 are utilized in this design.*
-
+*Target Hardware: ESP32-S3-WROOM-2 (N16 Variant).*
