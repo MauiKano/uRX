@@ -1,0 +1,142 @@
+#include <Arduino.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <driver/i2s_tdm.h>
+#include "config.h"
+
+// I2S Handles for Full-Duplex Multi-Lane Operation
+static i2s_chan_handle_t tx_handle = NULL;
+static i2s_chan_handle_t rx_handle = NULL;
+
+/**
+ * Initialize I2S in Full-Duplex TDM Mode
+ * This allows reading from ADC0 (SDR) and ADC1 (Radio) 
+ * while sending unified audio to the PCM5102A DAC.
+ */
+void init_i2s_system() {
+    // 1. Setup Channel Configuration (Master Role)
+    i2s_chan_config_t chan_cfg = I2S_CHANNEL_DEFAULT_CONFIG(I2S_NUM_0, I2S_ROLE_MASTER);
+    i2s_new_channel(&chan_cfg, &tx_handle, &rx_handle);
+
+    // 2. TDM Configuration for TX (Output to PCM5102A DAC)
+    i2s_tdm_config_t tx_tdm_cfg = {
+        .clk_cfg = I2S_TDM_CLK_DEFAULT_CONFIG(SAMPLE_RATE),
+        .slot_cfg = I2S_TDM_SLOT_DEFAULT_CONFIG(I2S_DATA_BIT_WIDTH_24BIT, I2S_SLOT_MODE_STEREO, I2S_TDM_SLOT0 | I2S_TDM_SLOT1),
+        .gpio_cfg = {
+            .mclk = I2S_GPIO_UNUSED,        // PCM5102A uses internal PLL via BCLK
+            .bclk = (gpio_num_t)I2S_BCK_PIN,
+            .ws   = (gpio_num_t)I2S_WS_PIN,
+            .dout = (gpio_num_t)I2S_DAC_DOUT,
+            .din  = I2S_GPIO_UNUSED,
+            .invert_flags = { .mclk_inv = false, .bclk_inv = false, .ws_inv = false }
+        }
+    };
+    i2s_channel_init_tdm_tx_handle(tx_handle, &tx_tdm_cfg);
+
+    // 3. TDM Configuration for RX (Two Input Lanes: SDR & Radio)
+    i2s_tdm_config_t rx_tdm_cfg = {
+        .clk_cfg = I2S_TDM_CLK_DEFAULT_CONFIG(SAMPLE_RATE),
+        .slot_cfg = I2S_TDM_SLOT_DEFAULT_CONFIG(I2S_DATA_BIT_WIDTH_24BIT, I2S_SLOT_MODE_STEREO, I2S_TDM_SLOT0 | I2S_TDM_SLOT1),
+        .gpio_cfg = {
+            .mclk = I2S_GPIO_UNUSED,
+            .bclk = (gpio_num_t)I2S_BCK_PIN, // Shared with TX
+            .ws   = (gpio_num_t)I2S_WS_PIN,  // Shared with TX
+            .dout = I2S_GPIO_UNUSED,
+            .din  = (gpio_num_t)I2S_ADC0_DIN, // Primary Lane (SDR I/Q)
+            .invert_flags = { .mclk_inv = false, .bclk_inv = false, .ws_inv = false }
+        }
+    };
+    i2s_channel_init_tdm_rx_handle(rx_handle, &rx_tdm_cfg);
+
+    /** 
+     * EXTRA STEP: Using GPIO Matrix to route ADC1 to the second I2S input signal.
+     * This connects GPIO 14 (ADC1) to the I2S0 peripheral's data input.
+     */
+    esp_rom_gpio_connect_in_signal((gpio_num_t)I2S_ADC1_DIN, i2s_periph_signal.groups[I2S_NUM_0].data_in_sigs[1], false);
+
+    // 4. Enable Channels
+    i2s_channel_enable(tx_handle);
+    i2s_channel_enable(rx_handle);
+
+    Serial.println("I2S: Full-Duplex TDM initialized (Dual ADC + DAC)");
+}
+
+void setup() {
+    // --- 1. System Console (USB CDC) ---
+    Serial.begin(115200);
+    delay(2000); 
+    Serial.println("uRX Navtex SDR Booting...");
+
+    // --- 2. I2C Bus (Si5351 & Si4732) ---
+    if (Wire.begin(I2C_SDA_PIN, I2C_SCL_PIN, I2C_FREQ)) {
+        Serial.println("I2C: Initialized (SDA:18, SCL:3)");
+    }
+
+    // --- 3. SPI Bus (TFT & E-Ink Shared) ---
+    SPI.begin(SPI_SCLK_PIN, -1, SPI_MOSI_PIN, -1);
+    Serial.println("SPI: Initialized (MOSI:1, SCLK:2)");
+
+    // --- 4. Display Control Pins ---
+    // E-Ink Setup
+    pinMode(EINK_CS_PIN, OUTPUT);
+    digitalWrite(EINK_CS_PIN, HIGH); // Inactive
+    pinMode(EINK_DC_PIN, OUTPUT);
+    pinMode(EINK_RST_PIN, OUTPUT);
+    pinMode(EINK_BUSY_PIN, INPUT);
+
+    // TFT Setup
+    pinMode(TFT_CS_PIN, OUTPUT);
+    digitalWrite(TFT_CS_PIN, HIGH); // Inactive
+    pinMode(TFT_DC_PIN, OUTPUT);
+    pinMode(TFT_RST_PIN, OUTPUT);
+    pinMode(TFT_BLK_PIN, OUTPUT);
+    digitalWrite(TFT_BLK_PIN, LOW); // Backlight Off initially
+
+    // --- 5. GPS Interface & Power ---
+    pinMode(GPS_EN_PIN, OUTPUT);
+    digitalWrite(GPS_EN_PIN, LOW); // GPS Off to save power/EMI
+    Serial2.begin(GPS_BAUD, SERIAL_8N1, GPS_RX_PIN, GPS_TX_PIN);
+
+    // --- 6. User Input (Encoder) ---
+    pinMode(ENCODER_A, INPUT_PULLUP);
+    pinMode(ENCODER_B, INPUT_PULLUP);
+    pinMode(ENCODER_SW, INPUT_PULLUP);
+
+    // --- 7. System Pins ---
+    pinMode(BAT_STAT_PIN, INPUT_PULLUP);
+    pinMode(SI4732_MUTE_PIN, OUTPUT);
+    digitalWrite(SI4732_MUTE_PIN, LOW); // Mute active
+
+    // --- 8. Audio I2S Architecture ---
+    init_i2s_system();
+
+    Serial.println("uRX System Ready.");
+}
+
+void loop() {
+    /**
+     * Data Buffer Strategy:
+     * We use a 32-bit array to hold the 24-bit data.
+     * TDM Stereo mode for 2 lanes will deliver data in the following order:
+     * [Lane0_L, Lane0_R, Lane1_L, Lane1_R]
+     */
+    static int32_t audio_buffer[1024]; 
+    size_t bytes_read = 0;
+    size_t bytes_written = 0;
+
+    // Read Data from ADC0 (SDR) and ADC1 (Radio)
+    esp_err_t ret = i2s_channel_read(rx_handle, audio_buffer, sizeof(audio_buffer), &bytes_read, 100);
+
+    if (ret == ESP_OK && bytes_read > 0) {
+        
+        /* 
+           --- SIGNAL PROCESSING PLACEHOLDER ---
+           Tayloe I/Q is in audio_buffer[0] and [1]
+           Radio Audio is in audio_buffer[2] and [3]
+        */
+
+        // For validation: Simple digital loopback 
+        // Sends the first incoming channel (SDR or Radio) to the DAC
+        i2s_channel_write(tx_handle, audio_buffer, bytes_read, &bytes_written, 100);
+    }
+}
