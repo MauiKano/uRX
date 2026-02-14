@@ -1,0 +1,42 @@
+** Drc report for uRX.kicad_pcb **
+** Created on 2026-02-14T20:40:18+0100 **
+
+** Found 0 DRC violations **
+
+** Found 8 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(124.9125 mm, 122.3375 mm): Track [Net-(U10-GND)] on F.Cu, length 0.9875 mm
+    @(125.6625 mm, 119.3875 mm): Pad 25 [Net-(U10-GND)] of U10 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(218.4650 mm, 56.8250 mm): Pad 7 [Net-(R28-Pad2)] of U12 on F.Cu
+    @(216.4750 mm, 57.3250 mm): Track [Net-(R28-Pad2)] on F.Cu, length 1.3789 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(130.9375 mm, 138.3350 mm): PTH pad S1 [Net-(J2-SHIELD)] of J2
+    @(130.9375 mm, 138.3350 mm): PTH pad S1 [Net-(J2-SHIELD)] of J2
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(130.9375 mm, 138.3350 mm): PTH pad S1 [Net-(J2-SHIELD)] of J2
+    @(130.9375 mm, 138.3350 mm): PTH pad S1 [Net-(J2-SHIELD)] of J2
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(130.9375 mm, 138.3350 mm): PTH pad S1 [Net-(J2-SHIELD)] of J2
+    @(130.9375 mm, 138.3350 mm): PTH pad S1 [Net-(J2-SHIELD)] of J2
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(94.7740 mm, 133.5260 mm): Track [GND] on F.Cu, length 1.0974 mm
+    @(96.3125 mm, 137.9500 mm): Track [GND] on F.Cu, length 0.4243 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(129.5875 mm, 128.4125 mm): Track [GND] on B.Cu, length 1.6500 mm
+    @(129.5875 mm, 130.0625 mm): Track [GND] on F.Cu, length 5.2625 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(196.0875 mm, 56.5875 mm): Track [GND] on F.Cu, length 0.1591 mm
+    @(197.2000 mm, 59.3000 mm): Track [GND] on B.Cu, length 0.6500 mm
+
+** Found 0 Footprint errors **
+
+** End of Report **
